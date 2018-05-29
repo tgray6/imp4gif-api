@@ -1,0 +1,6 @@
+'use strict';
+
+exports.DATABASE_URL = process.env.DATABASE_URL || 'mongodb://tgray6:sagesage1@ds239940.mlab.com:39940/imp4gif';
+
+exports.TEST_DATABASE_URL = process.env.TEST_DATABASE_URL || 'mongodb://tgray6:sagesage1@ds239940.mlab.com:39940/imp4gif-test';
+exports.PORT = process.env.PORT || 8080;
