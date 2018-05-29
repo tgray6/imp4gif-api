@@ -2,7 +2,7 @@
   "name": "imp4gif-api",
   "version": "1.0.0",
   "description": "imp4gif-api",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "mocha --exit",
     "start": "node server.js"
