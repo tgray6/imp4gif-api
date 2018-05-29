@@ -3,5 +3,5 @@ node_js: node
 before_script: chmod 0777 ./node_modules/.bin/mocha
 deploy:
   provider: heroku
-  api_key: "cafaab08-b8cc-4f5c-a047-44a821f60ee4"
+  api_key: "3bede279-ba37-4487-b2bc-f45bbcffaf02"
   app: thawing-mountain-68022
