@@ -1,46 +1,37 @@
 {
 	"items":[
 		{
-			"id": "uuidv1()",
 			"title": "Id 0 post title",
 			"type": "video",
-			"youtubeUrl": null,
 			"url": "https://i.imgur.com/KtK8z0F.mp4",
 			"author": "Xer0",
 			"comments": ["id 0  comment 1", "comment 2"]
 		},
 		{
-			"id": "uuidv1()",
 			"title": "Id 1 post title",
 			"type":"image",
-			"youtubeUrl": null,
 			"url": "https://media3.giphy.com/media/pYfxQcXVEGF6o/200w.webp",
 			"author": "Biggunz",
 			"comments": ["id 1 comment 1", "comment 2"]
 		},
 		{
-			"id": "uuidv1()",
 			"title": "Id 2 post title",
 			"type":"youtube",
-			"youtubeUrl": "https://www.youtube.com/embed/SN43u7up93I",
+			"youTubeUrl": "https://www.youtube.com/embed/SN43u7up93I",
 			"url": "https://www.youtube.com/watch?v=SN43u7up93I",
 			"author": "Biggunz",
-			"comments": ["id 2 comment 1", "comment 2"]			
+			"comments": ["id 2 comment 1", "comment 2"]		
 		},
 		{
-			"id": "uuidv1()",
 			"title": "Id 3 post title",
 			"type": "video",
-			"youtubeUrl": null,
 			"url": "https://i.imgur.com/tJ7roYr.mp4",
 			"author": "BakerMan",
 			"comments": ["id 3 comment 1", "comment 2"]
 		},
 		{
-			"id": "uuidv1()",
 			"title": "Id 4 post title",
 			"type": "image",
-			"youtubeUrl": null,
 			"url": "https://images5.alphacoders.com/444/thumb-1920-444701.jpg",
 			"author": "FarrariMan",
 			"comments": ["id 4 comment 1", "comment 2"]
