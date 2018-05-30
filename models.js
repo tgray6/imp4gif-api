@@ -2,7 +2,7 @@
 
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-const uuidv1 = require('uuid/v1');
+// const uuidv1 = require('uuid/v1');
 
 const itemSchema = mongoose.Schema({
 	// id: {type: String, default: uuidv1},

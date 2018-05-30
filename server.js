@@ -24,6 +24,7 @@ app.use(express.static('public'));
 app.use(morgan('common'));
 
 
+
 //GET
 app.get('/items', (req, res) => {
 	Items
@@ -40,6 +41,8 @@ app.get('/items', (req, res) => {
 			res.status(500).json({ message: 'Internal Server Error'})
 		});
 });
+
+
 
 
 //POST

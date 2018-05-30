@@ -14,7 +14,7 @@ chai.use(chaiHttp);
 describe('Items Endpoint', function() {
 
 	before(function() {
-		return runServer(DATABASE_URL);
+		return runServer(TEST_DATABASE_URL);
 	});
 
 	after(function() {
