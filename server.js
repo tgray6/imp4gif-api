@@ -20,7 +20,7 @@ app.use(
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(express.static('public'));
+// app.use(express.static('public'));
 app.use(morgan('common'));
 
 
