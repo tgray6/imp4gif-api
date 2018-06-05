@@ -56,6 +56,7 @@ app.post('/items/', (req, res) => {
 			"author": req.body.author,
 			"comments": req.body.comments
 		})
+		
 		.then(items => res.status(201).json(items.serialize()))
 		.catch(err =>{
 			console.error(err);
