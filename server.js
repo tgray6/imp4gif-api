@@ -19,7 +19,7 @@ app.use(
 );
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+// app.use(bodyParser.urlencoded());
 // app.use(express.static('public'));
 app.use(morgan('common'));
 
@@ -63,6 +63,29 @@ app.post('/items/', (req, res) => {
 			res.status(500).json({ message: 'Internal Server Error'})
 		});
 });
+
+
+
+
+//PUT ENDPOINT
+app.put('/items/:id', (req, res) => {
+  Items
+    .findByIdAndUpdate(req.params.id,
+    	{
+    		$push: {comments: req.body.comment},
+    	}, 
+    	{
+    		"new": true
+    	}
+    )
+    .then(updatedItem => {if (updatedItem != null)
+      return res.status(200).json(updatedItem)})
+    .catch(err => {
+    	console.error(err);
+    	res.status(500).json(err)
+    });
+});
+
 
 
 
