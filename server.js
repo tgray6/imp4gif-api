@@ -79,7 +79,7 @@ app.put('/items/:id', (req, res) => {
     	}
     )
     .then(updatedItem => {if (updatedItem != null)
-      return res.status(200).json(updatedItem)})
+      return res.status(200).json(updatedItem.serialize())})
     .catch(err => {
     	console.error(err);
     	res.status(500).json(err)
