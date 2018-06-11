@@ -1,7 +1,7 @@
 'use strict';
 
 // exports.CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:9999';
-exports.CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'https://imp4gif.netlify.com/';
+exports.CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'imp4gif.netlify.com/';
 
 
 
