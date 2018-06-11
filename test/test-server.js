@@ -24,7 +24,7 @@ describe('Items Endpoint', function() {
 	it('should 200 on GET requests', function() {
     	return chai
     		.request(app)
-      		.get('/items')
+      		.get('/items');;;;;;;;
        		.then(function(res) {
         		expect(res).to.have.status(200);
         		expect(res.body).to.be.an('object');

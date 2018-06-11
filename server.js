@@ -18,6 +18,37 @@ const { Items } = require('./models');
 //     })
 // );
 
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+// app.use(express.static('public'));
+app.use(morgan('common'));
+
+
+
+//USERS AND AUTHENTICATION
+const passport = require('passport');
+
+//JSON WEB TOKEN AUTH
+const jwtAuth = passport.authenticate('jwt', { session: false });
+
+//USER MODEL DATA
+const {User} = require('./models');
+
+//USERS ROUTER data
+const { router: usersRouter } = require('./users');
+const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+app.use('/users', usersRouter);
+app.use('/auth', authRouter);
+
+passport.use(localStrategy);
+passport.use(jwtStrategy);
+
+
+
+
+
+
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
@@ -28,10 +59,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded());
-// app.use(express.static('public'));
-app.use(morgan('common'));
 
 
 
@@ -64,6 +91,7 @@ app.post('/items/', (req, res) => {
 			"youTubeUrl": req.body.youTubeUrl,
 			"url": req.body.url,
 			"author": req.body.author,
+			// "authorid": req.user.userID,
 			"comments": req.body.comments
 		})
 		
