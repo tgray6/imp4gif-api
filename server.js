@@ -8,15 +8,15 @@ mongoose.Promise = global.Promise;
 // const PORT = process.env.PORT || 3000;
 
 const cors = require('cors');
-// const { CLIENT_ORIGIN } = require('./config');
+const { CLIENT_ORIGIN } = require('./config');
 const { PORT, DATABASE_URL } = require('./config');
 const { Items } = require('./models');
 
-// app.use(
-//     cors({
-//         origin: CLIENT_ORIGIN
-//     })
-// );
+app.use(
+    cors({
+        origin: CLIENT_ORIGIN
+    })
+);
 
 
 app.use(bodyParser.json());
