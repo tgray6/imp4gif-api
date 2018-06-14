@@ -45,7 +45,10 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  nickname: {type: String}
+  nickname: {
+  	type: String,
+  	required: true
+  }
 });
 
 UserSchema.methods.userserialize = function() {

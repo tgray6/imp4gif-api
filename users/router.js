@@ -87,16 +87,28 @@ router.post('/', jsonParser, (req, res) => {
   }
 
   let {username, password, nickname} = req.body;
+  let findUser = User.find({username}).count();
+  let findNick = User.find({nickname}).count();
 
-  return User.find({username})
-    .count()
-    .then(count => {
-      if (count > 0) {
+  return Promise.all([
+    findUser,
+    findNick
+    ])
+    .then(results => {
+      if (results[0] > 0) {
         return Promise.reject({
           code: 422,
           reason: 'ValidationError',
           message: 'Username already taken',
           location: 'username'
+        });
+      }
+      if (results[1] > 0) {
+        return Promise.reject({
+          code: 422,
+          reason: 'ValidationError',
+          message: 'Nickname already taken',
+          location: 'nickname'
         });
       }
       return User.hashPassword(password);
