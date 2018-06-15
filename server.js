@@ -63,7 +63,7 @@ app.use(function (req, res, next) {
 
 
 //GET
-app.get('/items', (req, res) => {
+app.get('/items', jwtAuth, (req, res) => {
 	Items
 		.find()
 		.sort({'created': 'desc'})
