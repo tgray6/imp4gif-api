@@ -83,7 +83,7 @@ app.get('/items', jwtAuth, (req, res) => {
 
 
 //POST
-app.post('/items/', (req, res) => {
+app.post('/items/', jwtAuth, (req, res) => {
 	Items
 		.create({
 			"title": req.body.title,
@@ -106,7 +106,7 @@ app.post('/items/', (req, res) => {
 
 
 //PUT ENDPOINT
-app.put('/items/:id', (req, res) => {
+app.put('/items/:id', jwtAuth, (req, res) => {
   Items
     .findByIdAndUpdate(req.params.id,
     	{
@@ -129,7 +129,7 @@ app.put('/items/:id', (req, res) => {
 
 
 //DELETE
-app.delete('/items/:id', (req, res) => {
+app.delete('/items/:id', jwtAuth, (req, res) => {
   Items
   	.findByIdAndRemove(req.params.id, (err, postId) => {
 
