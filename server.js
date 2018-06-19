@@ -91,7 +91,7 @@ app.post('/items/', jwtAuth, (req, res) => {
 			"youTubeUrl": req.body.youTubeUrl,
 			"url": req.body.url,
 			"author": req.body.author,
-			// "authorid": req.user.userID,
+			"authorid": req.user.userID,
 			"comments": req.body.comments
 		})
 		

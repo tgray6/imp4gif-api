@@ -11,7 +11,7 @@ const itemSchema = mongoose.Schema({
 	youTubeUrl: {type: String, required: true},
 	url: {type: String, required: true},
 	author: {type: String, required: true},
-	// authorid: {type: String, required: true},
+	authorid: {type: String, required: true},
 	comments: {type: Array, required: true},
 	created: {type: Date, default: Date.now}
 });
@@ -24,7 +24,7 @@ itemSchema.methods.serialize = function() {
 		youTubeUrl: this.youTubeUrl,
 		url: this.url,
 		author: this.author,
-		// authorid: this.authorid,
+		authorid: this.authorid,
 		comments: this.comments,
 		created: this.created
 	};
