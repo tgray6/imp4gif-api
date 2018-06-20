@@ -128,21 +128,43 @@ app.put('/items/:id', jwtAuth, (req, res) => {
 
 
 
-//DELETE
+//DELETE OLDER METHOD, DID NOT CHECK USERID AND authorid
+// app.delete('/items/:id', jwtAuth, (req, res) => {
+//   Items
+//   	.findByIdAndRemove(req.params.id, (err, postId) => {
+
+//   	if (err) return res.status(500).send(err);
+
+//   	const response = {
+//   		message: "Item Successfully Deleted",
+//   		id: postId._id
+//   	};
+
+//   	return res.status(200).send(response);
+//   });
+// });
+
+
+
 app.delete('/items/:id', jwtAuth, (req, res) => {
   Items
-  	.findByIdAndRemove(req.params.id, (err, postId) => {
-
-  	if (err) return res.status(500).send(err);
-
-  	const response = {
-  		message: "Item Successfully Deleted",
-  		id: postId._id
-  	};
-
-  	return res.status(200).send(response);
-  });
+    .findById(req.params.id)
+    .then(items => {
+        if(items.authorid!==req.user.userID){
+          console.log("Ids don't match");
+          res.status(403).json({message: `${items.authorid} does not match ${req.user.userID}`});
+          return null;
+        }
+        else{
+          return Items
+          .findByIdAndRemove(req.params.id);
+        }
+    })
+    .then(deletedItem => {if (deletedItem != null)
+      return res.sendStatus(204);
+    });
 });
+
 
 
 
