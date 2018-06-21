@@ -103,7 +103,7 @@ router.post('/', jsonParser, (req, res) => {
           location: 'username'
         });
       }
-      if (results[1] > 0) {
+      else if (results[1] > 0) {
         return Promise.reject({
           code: 422,
           reason: 'ValidationError',
