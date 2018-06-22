@@ -13,7 +13,7 @@ const { PORT, DATABASE_URL } = require('./config');
 const { Items } = require('./models');
 
 app.use(cors());
-
+//
 // app.use(
 //     cors({
 //         origin: CLIENT_ORIGIN
