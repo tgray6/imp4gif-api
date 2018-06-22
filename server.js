@@ -14,16 +14,16 @@ const { Items } = require('./models');
 
 app.use(cors())
 
-// app.use(
-//     cors({
-//         origin: CLIENT_ORIGIN
-//     })
-// );
+app.use(
+    cors({
+        origin: CLIENT_ORIGIN
+    })
+);
 
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
-// // app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+// app.use(express.static('public'));
 app.use(morgan('common'));
 
 
