@@ -5,8 +5,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 mongoose.Promise = global.Promise;
-// const PORT = process.env.PORT || 3000;
-
 const cors = require('cors');
 // const { CLIENT_ORIGIN } = require('./config');
 const { PORT, DATABASE_URL } = require('./config');
@@ -29,7 +27,6 @@ app.use(cors());
 //   }
 //   next();
 // });
-
 
 
 
@@ -59,8 +56,6 @@ passport.use(jwtStrategy);
 
 
 
-
-
 //GET
 app.get('/items', jwtAuth, (req, res) => {
 	Items
@@ -77,7 +72,6 @@ app.get('/items', jwtAuth, (req, res) => {
 			res.status(500).json({ message: 'Internal Server Error'})
 		});
 });
-
 
 
 
@@ -103,7 +97,6 @@ app.post('/items/', jwtAuth, (req, res) => {
 
 
 
-
 //PUT ENDPOINT
 app.put('/items/:id', jwtAuth, (req, res) => {
   Items
@@ -125,26 +118,7 @@ app.put('/items/:id', jwtAuth, (req, res) => {
 
 
 
-
-
-//DELETE OLDER METHOD, DID NOT CHECK USERID AND authorid
-// app.delete('/items/:id', jwtAuth, (req, res) => {
-//   Items
-//   	.findByIdAndRemove(req.params.id, (err, postId) => {
-
-//   	if (err) return res.status(500).send(err);
-
-//   	const response = {
-//   		message: "Item Successfully Deleted",
-//   		id: postId._id
-//   	};
-
-//   	return res.status(200).send(response);
-//   });
-// });
-
-
-
+//DELETE ENDPOINT
 app.delete('/items/:id', jwtAuth, (req, res) => {
   Items
     .findById(req.params.id)
@@ -163,9 +137,6 @@ app.delete('/items/:id', jwtAuth, (req, res) => {
       return res.sendStatus(204);
     });
 });
-
-
-
 
 
 
@@ -189,6 +160,8 @@ function runServer(databaseUrl = DATABASE_URL, port = PORT) {
     });
   });
 }
+
+
 
 function closeServer() {
   return mongoose.disconnect().then(() => {

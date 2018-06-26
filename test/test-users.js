@@ -232,31 +232,35 @@ describe('/users', function() {
           )
       });
 
-      // it('Should reject users with duplicate nickname', function() {
-      //   // Create an initial user
-      //   return User.create({
-      //     username,
-      //     password,
-      //     nickname
-      //   })
-      //     .then(() =>
-      //       // Try to create a second user with the same nickname
-      //       chai.request(app).post('/users').send({
-      //         usernameB,
-      //         password,
-      //         nickname
-      //       })
-      //     )
-      //     .then(res => {
-      //       expect(res).to.have.status(422);
-      //       expect(res.body.reason).to.equal('ValidationError');
-      //       expect(res.body.message).to.equal(
-      //         'Nickname already taken'
-      //       );
-      //       expect(res.body.location).to.equal('nickname');
-      //     }
-      //     )
-      // });
+      it('Should reject users with duplicate nickname', function() {
+        // Create an initial user
+        return User.create({
+          username,
+          password,
+          nickname
+        })
+          .then(() =>
+            // Try to create a second user with the same nickname
+            chai.request(app)
+            .post('/users')
+            .set('content-type', 'application/json') 
+            .send({
+              username: usernameB,
+              password,
+              nickname
+            })
+          )
+          .then(res => {
+            console.log(res.body);
+            expect(res).to.have.status(422);
+            expect(res.body.reason).to.equal('ValidationError');
+            expect(res.body.message).to.equal(
+              'Nickname already taken'
+            );
+            expect(res.body.location).to.equal('nickname');
+          }
+          )
+      });
 
       it('Should create a new user', function() {
         return chai
@@ -293,35 +297,3 @@ describe('/users', function() {
     });
   });
 });
-
-
-
-
-//FOR DISCUSSION
-
-      // it('Should reject users with missing password', function() {
-      //   return chai
-      //     .request(app)
-      //     .post('/users')
-      //     .send({
-      //       username,
-      //       nickname
-      //     })
-      //     .then(() =>
-      //       expect.fail(null, null, 'Request should not succeed')
-      //     )
-      //     .catch(err => {
-      //       if (err instanceof chai.AssertionError) {
-      //         throw err;
-      //       }
-
-      //       const res = err.response;
-      //       expect(res).to.have.status(422);
-      //       expect(res.body.reason).to.equal('ValidationError');
-      //       expect(res.body.message).to.equal('Missing field');
-      //       expect(res.body.location).to.equal('password');
-      //     });
-      // });
-
-
-
