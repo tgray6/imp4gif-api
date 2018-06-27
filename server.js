@@ -61,6 +61,7 @@ app.get('/items', jwtAuth, (req, res) => {
 	Items
 		.find()
 		.sort({'created': 'desc'})
+		.limit(50)
 		.then(items => {
   			res.json({
   				items: items.map(
